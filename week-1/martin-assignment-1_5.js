@@ -13,7 +13,9 @@ const header = require("../header.js");
 
 /*
 ; Expected output:
-; <Your expected output here>
+; Troy Martin
+; Assignment 1.5
+; Date: 4/22/2019
 */
 
 // variable declaration and assignment
