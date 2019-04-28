@@ -1,0 +1,8 @@
+{
+  "name": "hello-world",
+  "author": "Troy Martin",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
