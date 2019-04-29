@@ -16,7 +16,10 @@ console.log("");
 
 /*
 ; Expected output:
-; <Your expected output here>
+; / - Welcome to the homepage!
+; /about - Welcome to the about page!
+; /contact - Welcome to the contact page!
+; 404! - any other route
 */
 
 // variable declaration and assignment
