@@ -16,6 +16,10 @@
     body{
       font-family: 'Josefin Sans', 'sans-serif', 'Arial', 'Tahoma', 'Veranda';
     }
+
+    .container__address--center{
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -24,7 +28,7 @@
     <div class="jumbotron">
       <div class="row">
         <div class="col">
-          <address>
+          <address class="container__address--center">
             <h2><%= firstName %> <%= lastName %></h2><br/>
             <%= address %><br/>
             <%= city %>, <%= state %> <%= postalCode %>
