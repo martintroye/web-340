@@ -36,6 +36,7 @@ var http = require("http");
 // Declare the express variable and import the express module
 var express = require("express");
 
+// Declare the path variable and import the path module
 var path = require("path");
 
 // Declare the app variable and call the express function to start an Express application instance

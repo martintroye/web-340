@@ -8,6 +8,7 @@
   <!-- inlcude the bootstrap css, google fonts used on the page -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Source+Code+Pro:400,700" rel="stylesheet">
+  <!-- custom css for the page -->
   <style>
     html{
       font-size: 16px;
@@ -24,11 +25,16 @@
 </head>
 <body>
 
+  <!-- create the base container on the page -->
   <div class="container">
+    <!-- create the banner div applying bootstrap jumbotron style -->
     <div class="jumbotron">
+      <!-- create a containing row and column for the output -->
       <div class="row">
         <div class="col">
+          <!-- create an address element styled to center in the banner -->
           <address class="container__address--center">
+            <!-- output the variables bound from the view model -->
             <h2><%= firstName %> <%= lastName %></h2><br/>
             <%= address %><br/>
             <%= city %>, <%= state %> <%= postalCode %>
