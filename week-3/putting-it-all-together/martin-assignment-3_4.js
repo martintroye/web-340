@@ -46,7 +46,7 @@ app.get("/", function(request, response){
 // Call the get function to set the route handler for the about page
 app.get("/about", function(request, response){
   // Call the render function passing the view name and the view model containing the data for the page
-  response.render("index", {
+  response.render("about", {
     message: "about page"
   });
 });
@@ -54,7 +54,7 @@ app.get("/about", function(request, response){
 // Call the get function to set the route handler for the contact page
 app.get("/contact", function(request, response){
   // Call the render function passing the view name and the view model containing the data for the page
-  response.render("index", {
+  response.render("contact", {
     message: "contact page"
   });
 });
@@ -62,7 +62,7 @@ app.get("/contact", function(request, response){
 // Call the get function to set the route handler for the products page
 app.get("/products", function(request, response){
   // Call the render function passing the view name and the view model containing the data for the page
-  response.render("index", {
+  response.render("products", {
     message: "products page"
   });
 });
