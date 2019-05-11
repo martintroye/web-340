@@ -1,6 +1,6 @@
 /*
 ============================================
-; Title: Assignment 4.2
+; Title: Exercise 4.2
 ; Author: Troy Martin
 ; Date: 05/10/2019
 ; Modified By: Troy Martin
@@ -11,10 +11,11 @@
 // Require statement that imports the header.js file from my root directory.
 const header = require("../../header.js");
 // Call the console.log() function and output a well-formatted header with a line feed
-console.log(header.display("Troy", "Martin", "Assignment 4.2"));
+console.log(header.display("Troy", "Martin", "Exercise 4.2"));
 console.log("");
 
 // variable declaration and assignment
+// define the tractor to return
 let tractor = {
   id: 1,
   type: "Tractor",
@@ -31,8 +32,11 @@ var app = express();
 
 // Call the get function to set the route handler for the home page
 app.get("/vehicles/:id", function(request, response){
+  // Declare the vehicle id and get the value off the url
   var vehicleId = parseInt(request.params.id, 10);
+  // Set the id on the tractor
   tractor.id = vehicleId;
+  // Return the json response
   response.json(tractor);
 });
 
