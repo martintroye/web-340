@@ -14,6 +14,7 @@ console.log(header.display("Troy", "Martin", "Exercise 5.2"));
 console.log("");
 
 // variable declaration and assignment
+// Declare the array of fruits to pass in the view model
 const listOfFruits = [
   "Apple",
   "Blueberry",
