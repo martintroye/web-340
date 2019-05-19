@@ -29,7 +29,7 @@ var app = express();
 
 // Call the Express set function to tell Express the views are in the 'views' directory
 app.set("views",path.resolve(__dirname,"views"));
-// Call the Express set function to set the view engine to EJS
+// Call the Express set function to set the view engine to Pug
 app.set("view engine","pug");
 
 // Call the get function to set the route handler for the root
