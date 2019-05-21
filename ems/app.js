@@ -40,7 +40,35 @@ app.use(express.static('./'));
 app.get("/", function(request, response) {
   // Render the index page setting the view model title
   response.render("index", {
-    title: "Home page"
+    title: "Home page",
+    page: "home"
+  });
+});
+
+app.get("/list", function(request, response) {
+  // Render the list page setting the view model title
+  response.render("list", {
+    title: "List page",
+    page: "list"
+  });
+});
+
+app.get("/new", function(request, response) {
+  // Render the new page setting the view model title
+  response.render("new", {
+    title: "New employee page",
+    page: "new"
+  });
+});
+
+app.get("/view/:id", function(request, response) {
+  // Declare the employee id and get the value off the url
+  var employeeId = parseInt(request.params.id, 10);
+
+  // Render the view page setting the view model title
+  response.render("view", {
+    title: "View employee page",
+    page: "view"
   });
 });
 
