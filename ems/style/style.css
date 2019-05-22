@@ -1,6 +1,11 @@
+.body--padded{
+  padding-top: 8rem;
+}
+
 .carousel {
   margin-bottom: 4rem;
 }
+
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;

@@ -6,26 +6,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <% if(page === "home"){%>
-          <li class="nav-item active">
-        <%} else{ %>
-          <li class="nav-item">
-        <% } %>
+        <li class="nav-item <%= page === 'home' ? 'active' : ''%>">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <% if(page === "list"){%>
-          <li class="nav-item active">
-        <%} else{ %>
-          <li class="nav-item">
-        <% } %>
+        <li class="nav-item <%= page === 'list' ? 'active' : ''%>">
           <a class="nav-link" href="/list">List</a>
         </li>
-        <% if(page === "new"){%>
-          <li class="nav-item active">
-        <%} else{ %>
-          <li class="nav-item">
-        <% } %>
+        <li class="nav-item <%= page === 'new' ? 'active' : ''%>">
           <a class="nav-link" href="new">New</a>
+        </li>
+        <li class="nav-item <%= page === 'view' ? 'active' : ''%>">
+          <a class="nav-link" href="view">View</a>
         </li>
       </ul>
     </div>

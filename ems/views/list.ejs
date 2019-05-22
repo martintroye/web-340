@@ -10,11 +10,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <% include header %>
-  <body>
+  <body class="body--padded">
     <% include navbar %>
     <main rol="main">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>Hartman</td>
+              <td>Lead Quality Assurance</td>
+            </tr>
+            <tr>
+              <td>Mike</td>
+              <td>Barton</td>
+              <td>Network Administrator</td>
+            </tr>
+            <tr>
+              <td>Joe</td>
+              <td>Gaston</td>
+              <td>Software Engineer</td>
+            </tr>
+            <tr>
+              <td>Jared</td>
+              <td>Vogeltanz</td>
+              <td>Software Architect</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <% include footer %>
-
     </main>
     <% include scripts %>
   </body>

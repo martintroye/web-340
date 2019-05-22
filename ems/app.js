@@ -33,7 +33,7 @@ app.set("views",path.resolve(__dirname,"views"));
 app.set("view engine","ejs");
 // Call the Express use function to setup the logger using the short format
 app.use(logger("short"));
-
+// Call the Express use function to setup static resource use
 app.use(express.static('./'));
 
 // Call the get function to set the route handler for the root
@@ -45,6 +45,7 @@ app.get("/", function(request, response) {
   });
 });
 
+// Call the Express get function to setup the route for the list page
 app.get("/list", function(request, response) {
   // Render the list page setting the view model title
   response.render("list", {
@@ -53,6 +54,7 @@ app.get("/list", function(request, response) {
   });
 });
 
+// Call the Express get function to setup the route for the new page
 app.get("/new", function(request, response) {
   // Render the new page setting the view model title
   response.render("new", {
@@ -61,14 +63,16 @@ app.get("/new", function(request, response) {
   });
 });
 
-app.get("/view/:id", function(request, response) {
-  // Declare the employee id and get the value off the url
-  var employeeId = parseInt(request.params.id, 10);
+// Call the Express get function to setup the route for the view page with an optional id route parameter
+app.get("/view/:id?", function(request, response) {
+  // Declare the employee id and get the value off the url if it exists
+  var employeeId = request.params && request.params.id ? parseInt(request.params.id, 10) : null;
 
-  // Render the view page setting the view model title
+  // Render the view page setting the view model title, page and employee id from the route
   response.render("view", {
     title: "View employee page",
-    page: "view"
+    page: "view",
+    employeeId: employeeId
   });
 });
 
