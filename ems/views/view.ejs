@@ -10,11 +10,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <% include header %>
-  <body>
+  <body class="body--padded">
     <% include navbar %>
-    <main rol="main">
-      <% include footer %>
+    <main role="main">
+      <div class="container">
+        <h2><%= title %></h2>
+      </div>
 
+
+      <% include footer %>
     </main>
     <% include scripts %>
   </body>

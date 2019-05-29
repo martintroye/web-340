@@ -12,7 +12,7 @@
   <% include header %>
   <body>
     <% include navbar %>
-    <main rol="main">
+    <main role="main">
       <div id="carousel" class="carousel slide" data-rid="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -55,6 +55,42 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">List</h3>
+              </div>
+              <div class="card-body">
+                <p class="card-text">View a list of of your employees and manage their information.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">New</h3>
+              </div>
+              <div class="card-body">
+                <p class="card-text">Add a new employee to your roster by completing this simple form.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">View</h3>
+              </div>
+              <div class="card-body">
+                <p class="card-text">Select an employee from the list to view their information.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <% include footer %>
 
     </main>

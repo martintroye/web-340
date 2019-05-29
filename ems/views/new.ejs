@@ -10,9 +10,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <% include header %>
-  <body>
+  <body class="body--padded">
     <% include navbar %>
-    <main rol="main">
+    <main role="main">
+      <div class="container">
+        <h2><%= title %></h2>
+        <form>
+          <div class="row">
+            <div class="col form-group">
+              <label for="txtFirstName">First name</label>
+              <input type="text" id="txtFirstName" class="form-control">
+            </div>
+            <div class="col form-group">
+              <label for="txtLastName">Last name</label>
+              <input type="text" id="txtLastName" class="form-control">
+            </div>
+            <div class="col form-group">
+              <label for="txtTitle">Title</label>
+              <input type="text" id="txtTitle" class="form-control">
+            </div>
+          </div>
+
+        </form>
+        <p>
+          <button id="btnSubmit" class="btn btn-primary float-right">Submit</button>
+          <button id="btnReset" class="btn btn-link float-right">Reset</button>
+        </p>
+      </div>
+
+
       <% include footer %>
 
     </main>
