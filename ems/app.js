@@ -23,6 +23,38 @@ var http = require("http");
 var path = require("path");
 // Declare the logger variable and import the Morgan module
 var logger = require("morgan");
+// Declare the mongoose variable and import the mongoose module
+var mongoose = require("mongoose");
+
+// Declare the Employee variable and import the employee model
+// Because we did not specify a schema collection the mongodb collection will be employees
+var Employee = require("./models/employee")
+
+// mLab connection to the ems database
+var mongoDB = "mongodb+srv://sa:b0nehead@buwebdev-cluster-1-opi0o.mongodb.net/ems?retryWrites=true";
+
+// Call Mongoose connect function passing the connection string
+mongoose.connect(mongoDB, {
+  // Error The `useMongoClient` option is no longer necessary in mongoose 5.x, please remove it.
+  // useMongoClient: true
+});
+
+// Set the promise the global promise
+mongoose.Promise = global.Promise;
+
+// Get the default connection
+var db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error: "));
+
+// Set the open event on the db
+db.on("open", function(){
+  // Call the log function to output the message
+  console.log("Application connected to mLab MongoDB instance.");
+});
+
+// Declare and employee variable and set it to a instance of the Employee model, doc is optional so I left it out
+var employee = new Employee();
 
 // Declare the app variable and call the express function to start an Express application instance
 var app = express();
