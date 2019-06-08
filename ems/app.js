@@ -25,6 +25,8 @@ var path = require("path");
 var logger = require("morgan");
 // Declare the mongoose variable and import the mongoose module
 var mongoose = require("mongoose");
+// Declare and helmet variable and import the module
+var helmet = require("helmet");
 
 // Declare the Employee variable and import the employee model
 // Because we did not specify a schema collection the mongodb collection will be employees
@@ -65,6 +67,8 @@ app.set("views",path.resolve(__dirname,"views"));
 app.set("view engine","ejs");
 // Call the Express use function to setup the logger using the short format
 app.use(logger("short"));
+// Call the Express use function to setup the helmet XSS filter
+app.use(helmet.xssFilter());
 // Call the Express use function to setup static resource use
 app.use(express.static('./'));
 
