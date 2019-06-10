@@ -25,8 +25,17 @@ var path = require("path");
 var logger = require("morgan");
 // Declare the mongoose variable and import the mongoose module
 var mongoose = require("mongoose");
-// Declare and helmet variable and import the module
+// Declare helmet variable and import the module
 var helmet = require("helmet");
+// Declare bodyParser variable and import the module
+var bodyParser = require("body-parser");
+// Declare cookieParser variable and import the module
+var cookieParser = require("cookie-parser");
+// Declare csrf variable and import the module
+var csrf = require("csurf");
+
+// create cross site request forgery object setting that the token will be stored in a cookie
+var csrfProtection = csrf({cookie: true});
 
 // Declare the Employee variable and import the employee model
 // Because we did not specify a schema collection the mongodb collection will be employees
@@ -60,6 +69,30 @@ var employee = new Employee();
 
 // Declare the app variable and call the express function to start an Express application instance
 var app = express();
+
+// Call the Expres use function to apply the body-parser middleware parsing url encoded bodies only
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+// Call the Expres use function to apply the cookie-parser middleware
+app.use(cookieParser());
+
+// Call the Expres use function to apply the CSRF middleware
+app.use(csrfProtection);
+
+// Call the Expres use function to apply a function that will generate a new token and apply it to a cookie and the local variables
+app.use(function(request, response, next){
+  // Generate the token
+  var token = request.csrfToken();
+  // Set the cookie on the response
+  response.cookie('XSRF-TOKEN', token);
+  // Set the variable to be used on the page for a hidden input
+  response.locals.csrfToken = token;
+
+  // Call the next piece of middleware
+  next();
+});
 
 // Call the Express set function to tell Express the views are in the 'views' directory
 app.set("views",path.resolve(__dirname,"views"));
@@ -97,6 +130,13 @@ app.get("/new", function(request, response) {
     title: "New employee page",
     page: "new"
   });
+});
+
+// Call the Express post function to setup the route to handle the new employee form
+app.post("/process", function(request, response){
+  console.log(request.body.txtName);
+  // redirect to the home page
+  response.redirect("/");
 });
 
 // Call the Express get function to setup the route for the view page with an optional id route parameter
