@@ -116,10 +116,19 @@ app.get("/", function(request, response) {
 
 // Call the Express get function to setup the route for the list page
 app.get("/list", function(request, response) {
-  // Render the list page setting the view model title
-  response.render("list", {
-    title: "List page",
-    page: "list"
+  // Call the find funciton on the Employee schema to retrieve all employees
+  Employee.find({}, function(error, employees){
+    // if an error exists throw it
+    if(error){
+      throw error;
+    }
+
+    // Render the list page setting the view model title
+    response.render("list", {
+      title: "Employee list",
+      page: "list",
+      employees
+    })
   });
 });
 
@@ -134,7 +143,44 @@ app.get("/new", function(request, response) {
 
 // Call the Express post function to setup the route to handle the new employee form
 app.post("/process", function(request, response){
-  console.log(request.body.txtName);
+  //console.log(request.body.txtName);
+  // Validate that the first name was set
+  if(!request.body.txtFirstName){
+    // Return a bad request response with a message
+    response.status(400).send("Entries must have a first name.");
+    return;
+  }
+
+  // Validate that the last name was set
+  if(!request.body.txtLastName){
+    // Return a bad request response with a message
+    response.status(400).send("Entries must have a last name.");
+    return;
+  }
+
+  // Declare and set variables to hold the form values
+  var firstName = request.body.txtFirstName;
+  var lastName = request.body.txtLastName;
+
+  // Call the console log function to output the values
+  console.log(firstName, lastName);
+  // Declare a new Employee setting the required first and last name
+  var employee = new Employee({
+    firstName,
+    lastName
+  });
+
+  // Call the save function on the employee schema to save the document
+  employee.save(function(error){
+    // if there was an error throw it
+    if(error){
+      throw error;
+    }
+
+    // Call the console log function to output a message that the save worked
+    console.log(`Employee ${firstName} ${lastName} save successfully!`);
+  })
+
   // redirect to the home page
   response.redirect("/");
 });

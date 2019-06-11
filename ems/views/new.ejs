@@ -19,8 +19,12 @@
         <!-- include the CSRF token in the post -->
         <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>">
         <div class="form-group">
-          <label for="txtName">Name</label>
-          <input type="text" id="txtName" name="txtName" class="form-control">
+          <label for="txtFirstName">First name</label>
+          <input type="text" id="txtFirstName" name="txtFirstName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="txtLastName">Last name</label>
+          <input type="text" id="txtLastName" name="txtLastName" class="form-control">
         </div>
         <div class="form-group">
           <button id="btnSubmit" type="submit" class="btn btn-primary float-right">Submit</button>

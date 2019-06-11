@@ -15,45 +15,32 @@
     <main role="main">
       <div class="container">
         <h2><%= title %></h2>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Title</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a href="/view/1">1</a></td>
-                <td>Mark</td>
-                <td>Hartman</td>
-                <td>Lead Quality Assurance</td>
-              </tr>
-              <tr>
-                <td><a href="/view/2">2</a></td>
-                <td>Mike</td>
-                <td>Barton</td>
-                <td>Network Administrator</td>
-              </tr>
-              <tr>
-                <td><a href="/view/3">3</a></td>
-                <td>Joe</td>
-                <td>Gaston</td>
-                <td>Software Engineer</td>
-              </tr>
-              <tr>
-                <td><a href="/view/4">4</a></td>
-                <td>Jared</td>
-                <td>Vogeltanz</td>
-                <td>Software Architect</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
+        <!-- Test to see if the employees list exist and that it is an array-->
+        <% if(employees && employees.length){ %>
+          <a class="float-right" href="/new">Add new</a>
+          <div class="table-responsive">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>First name</th>
+                  <th>Last name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Use the Array forEach to loop the list of employees -->
+                <% employees.forEach(function(employee){ %>
+                  <tr>
+                    <td><%= employee.firstName %></td>
+                    <td><%= employee.lastName %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        <% } else{ %>
+          <br><br>
+          <p>No entries <a href="/new">add one!</a></p>
+        <% } %>
       </div>
       <% include footer %>
     </main>
