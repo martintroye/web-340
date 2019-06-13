@@ -12,14 +12,26 @@
   <% include header %>
   <body class="body--padded">
     <% include navbar %>
-    <main role="main">
-      <div class="container">
-        <h2><%= title %></h2>
+    <div role="main" class="container">
+      <br><br>
+      <h2><%= title %></h2>
+      <% if(employees && employees.length){ %>
+      <div class="form-group">
+        <label for="txtFirstName">First name</label>
+        <input type="text" id="txtFirstName" name="txtFirstName" class="form-control" readonly value="<%= employees[0].firstName %>">
       </div>
-
-
+      <div class="form-group">
+        <label for="txtLastName">Last name</label>
+        <input type="text" id="txtLastName" name="txtLastName" class="form-control" readonly value="<%= employees[0].lastName %>">
+      </div>
+      <p class="float-right">
+        <a href="/">Ok</a>
+      </p>
+      <% } else{ %>
+        <h2>Not found</h2>
+      <% } %>
       <% include footer %>
-    </main>
+    </div>
     <% include scripts %>
   </body>
 </html>

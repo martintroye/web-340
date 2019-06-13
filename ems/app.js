@@ -41,8 +41,11 @@ var csrfProtection = csrf({cookie: true});
 // Because we did not specify a schema collection the mongodb collection will be employees
 var Employee = require("./models/employee")
 
+// Declare ObjectId and import the module
+var ObjectId = require('mongoose').Types.ObjectId;
+
 // mLab connection to the ems database
-var mongoDB = "mongodb+srv://sa:b0nehead@buwebdev-cluster-1-opi0o.mongodb.net/ems?retryWrites=true";
+var mongoDB = "mongodb+srv://sa:qWVNk4b7XRPE611Q@buwebdev-cluster-1-opi0o.mongodb.net/ems?retryWrites=true";
 
 // Call Mongoose connect function passing the connection string
 mongoose.connect(mongoDB, {
@@ -66,6 +69,7 @@ db.on("open", function(){
 
 // Declare and employee variable and set it to a instance of the Employee model, doc is optional so I left it out
 var employee = new Employee();
+
 
 // Declare the app variable and call the express function to start an Express application instance
 var app = express();
@@ -116,7 +120,7 @@ app.get("/", function(request, response) {
 
 // Call the Express get function to setup the route for the list page
 app.get("/list", function(request, response) {
-  // Call the find funciton on the Employee schema to retrieve all employees
+  // Call the find function on the Employee schema to retrieve all employees
   Employee.find({}, function(error, employees){
     // if an error exists throw it
     if(error){
@@ -136,7 +140,7 @@ app.get("/list", function(request, response) {
 app.get("/new", function(request, response) {
   // Render the new page setting the view model title
   response.render("new", {
-    title: "New employee page",
+    title: "New employee",
     page: "new"
   });
 });
@@ -188,13 +192,23 @@ app.post("/process", function(request, response){
 // Call the Express get function to setup the route for the view page with an optional id route parameter
 app.get("/view/:id?", function(request, response) {
   // Declare the employee id and get the value off the url if it exists
-  var employeeId = request.params && request.params.id ? parseInt(request.params.id, 10) : null;
+  var employeeId = request.params && request.params.id ? request.params.id : null;
+  // Convert the employeeId to a mongo object id
+  var objId = ObjectId(employeeId);
 
-  // Render the view page setting the view model title, page and employee id from the route
-  response.render("view", {
-    title: "View employee page",
-    page: "view",
-    employeeId: employeeId
+  // Call the find function on the Employee schema to retrieve the employee with the matching id
+  Employee.find({_id: objId}, function(error, employees){
+    // if an error exists throw it
+    if(error){
+      throw error;
+    }
+
+    // Render the list page setting the view model title
+    response.render("view", {
+      title: "Employee details",
+      page: "view",
+      employees
+    })
   });
 });
 
