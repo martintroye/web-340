@@ -8,10 +8,10 @@
 */
 // start program
 // Require statement that imports the header.js file from my root directory.
-const header = require("../header.js");
+//const header = require("../header.js");
 // Call the console.log() function and output a well-formatted header with a line feed
-console.log(header.display("Troy", "Martin", "EMS"));
-console.log("");
+//console.log(header.display("Troy", "Martin", "EMS"));
+//console.log("");
 
 // variable declaration and assignment
 
@@ -98,6 +98,8 @@ app.use(function(request, response, next){
   next();
 });
 
+// Call the Express set function to set a port variable
+app.set("port", process.env.PORT || 8080);
 // Call the Express set function to tell Express the views are in the 'views' directory
 app.set("views",path.resolve(__dirname,"views"));
 // Call the Express set function to set the view engine to EJS
@@ -213,7 +215,7 @@ app.get("/view/:id?", function(request, response) {
 });
 
 // Call the createServer method passing the application and listen for a request on port 8080 with a listening function
-http.createServer(app).listen(8080, function() {
+http.createServer(app).listen(app.get("port"), function() {
   // Call the console log function to output a message
-  console.log("Application started on port 8080!");
+  console.log(`Application started on port ${app.get("port")}!`);
 });
